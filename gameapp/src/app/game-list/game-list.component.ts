@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../game';
+import { GAMES } from 'src/mock-games';
 
 @Component({
   selector: 'app-game-list',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameListComponent implements OnInit {
 
-  constructor() { }
+  games: Game[];
+  constructor() {
+    this.games = GAMES;
+
+  }
 
   ngOnInit() {
   }

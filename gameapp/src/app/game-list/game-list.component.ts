@@ -10,8 +10,10 @@ import { GAMES } from 'src/mock-games';
 export class GameListComponent implements OnInit {
 
   games: Game[];
+  selectedGame: Game;
   constructor() {
     this.games = GAMES;
+    this.selectedGame = this.games[1];
 
   }
 

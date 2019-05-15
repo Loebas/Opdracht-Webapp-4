@@ -1,9 +1,26 @@
 <p>
   game-list works!
 </p>
-<p *ngFor="let g of games">
-  * {{g.naam}}
-</p>
-<app-game-detail [detailedGame]="selectedGame">
+<table mat-table [dataSource]="games">
+  <ng-container matColumnDef="naam">
+    <th mat-header-cell *matHeaderCellDef>Naam spel </th>
+    <td mat-cell *matCellDef="let game"> {{game.naam}} </td>
+  </ng-container>
+  <ng-container matColumnDef="minSpelers">
+    <th mat-header-cell *matHeaderCellDef>Spelers Min</th>
+    <td mat-cell *matCellDef="let game"> {{game.minSpelers}} </td>
+  </ng-container>
+  <ng-container matColumnDef="maxSpelers">
+    <th mat-header-cell *matHeaderCellDef>Spelers Max </th>
+    <td mat-cell *matCellDef="let game"> {{game.maxSpelers}} </td>
+  </ng-container>
+  <ng-container matColumnDef="difficulty">
+    <th mat-header-cell *matHeaderCellDef>Niveau</th>
+    <td mat-cell *matCellDef="let game"> {{game.difficulty}} </td>
+  </ng-container>
 
-</app-game-detail>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
+
+<app-game-detail [detailedGame]="selectedGame"></app-game-detail>

@@ -1,0 +1,10 @@
+th, td {
+    overflow: hidden;
+    width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mat-row:hover {
+    background-color: rgb(192, 212, 192);
+  }

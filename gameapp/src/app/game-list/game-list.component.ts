@@ -11,6 +11,8 @@ export class GameListComponent implements OnInit {
 
   games: Game[];
   selectedGame: Game;
+  columnsToDisplay = ['naam', 'minSpelers', 'maxSpelers', 'difficulty'];
+
   constructor() {
     this.games = GAMES;
     this.selectedGame = this.games[1];

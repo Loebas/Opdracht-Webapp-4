@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Game } from '../game';
+import { GAMES } from 'src/mock-games';
 
 @Component({
   selector: 'app-game-detail',
@@ -8,9 +9,18 @@ import { Game } from '../game';
 })
 export class GameDetailComponent implements OnInit {
 
-  @Input() detailedGame: Game;
+  @Input() detailedGameId: number = 3;
 
-  constructor() { }
+  detailedGame: Game = GAMES[this.detailedGameId];
+  constructor() {
+    this.detailedGameId = 3;
+
+  }
+
+  ngOnChanges() {
+
+    this.detailedGame = GAMES[this.detailedGameId - 1];
+  }
 
   ngOnInit() {
   }

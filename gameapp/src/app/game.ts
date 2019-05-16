@@ -27,7 +27,7 @@ export class Game {
 
 
     static fromJSON(json: any): Game {
-        const g = new Game(json.id, json.naam, json.minSpelers, json.maxSpelers, json.difficulty)
+        const g = new Game(json.id, json.spelNaam, json.minSpelers, json.maxSpelers, json.difficulty)
         return g;
     }
 }

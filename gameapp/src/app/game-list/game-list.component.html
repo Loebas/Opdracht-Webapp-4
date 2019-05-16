@@ -1,26 +1,35 @@
 <p>
   game-list works!
 </p>
-<table mat-table [dataSource]="games">
+
+
+<input matInput (keyup)="filterTerm$.next($event.target.value)" placeholder="Filter">
+
+<p *ngIf="(laaderror$ | async)">Helaas, er is iets fout gelopen. De spellen kun niet opgehaald worden. </p>
+<table mat-table [dataSource]="gameDataSource | gameFilter: filterTerm " matSort>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let game"> {{game.id}} </td>
+  </ng-container>
   <ng-container matColumnDef="naam">
-    <th mat-header-cell *matHeaderCellDef>Naam spel </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Naam spel </th>
     <td mat-cell *matCellDef="let game"> {{game.naam}} </td>
   </ng-container>
   <ng-container matColumnDef="minSpelers">
-    <th mat-header-cell *matHeaderCellDef>Spelers Min</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Spelers Min</th>
     <td mat-cell *matCellDef="let game"> {{game.minSpelers}} </td>
   </ng-container>
   <ng-container matColumnDef="maxSpelers">
-    <th mat-header-cell *matHeaderCellDef>Spelers Max </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Spelers Max </th>
     <td mat-cell *matCellDef="let game"> {{game.maxSpelers}} </td>
   </ng-container>
   <ng-container matColumnDef="difficulty">
-    <th mat-header-cell *matHeaderCellDef>Niveau</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Niveau</th>
     <td mat-cell *matCellDef="let game"> {{game.difficulty}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay" (click)='selectGame(myRowData)'></tr>
 </table>
-
-<app-game-detail [detailedGame]="selectedGame"></app-game-detail>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<app-game-detail *ngIf="selectedGameId" [detailedGameId]="selectedGameId"></app-game-detail>

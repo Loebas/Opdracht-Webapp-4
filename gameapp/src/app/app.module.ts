@@ -5,15 +5,19 @@ import { AppComponent } from './app.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatCardModule, MatIconModule, MatTableModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { MatListModule, MatCardModule, MatIconModule, MatTableModule, MatSortModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { GameFilterPipe } from './game-filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GameListComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    GameFilterPipe
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
@@ -21,7 +25,10 @@ import { FlexLayoutModule } from '@angular/flex-layout'
     MatListModule,
     MatCardModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

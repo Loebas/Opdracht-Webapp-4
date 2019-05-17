@@ -9,17 +9,15 @@ import { GAMES } from 'src/mock-games';
 })
 export class GameDetailComponent implements OnInit {
 
-  @Input() detailedGameId: number = 3;
+  @Input() detailedGameId: number;
 
-  detailedGame: Game = GAMES[this.detailedGameId];
+  detailedGame: Game;
+
   constructor() {
-    this.detailedGameId = 3;
-
   }
 
-  ngOnChanges() {
 
-    this.detailedGame = GAMES[this.detailedGameId - 1];
+  ngOnChanges() {
   }
 
   ngOnInit() {

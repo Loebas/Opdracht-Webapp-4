@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Game } from '../game';
 import { GAMES } from 'src/mock-games';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { GameDataService } from '../game-data.service';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { Subject, Observable } from 'rxjs';
@@ -38,13 +38,18 @@ export class GameListComponent implements OnInit {
 
   constructor(private _gameDataService: GameDataService) {
 
-    this._gameDataService.games$.subscribe(g => { this._games = g; this.gameDataSource.data = this.games; });
-    this.selectedGameId = 1;
+    this._gameDataService.games$.subscribe(g => {
+      this._games = g;
+      this.gameDataSource.data = this.games;
+      this.gameDataSource.paginator = this.paginator;
+    });
+
     this.filterTerm$.pipe(map(x => x.toLowerCase())).subscribe(term => this.gameDataSource.filter = term);
 
 
   }
 
+  @ViewChild('gamesPaginator') paginator: MatPaginator;
 
 
   // voor weergave in tabel + sortering

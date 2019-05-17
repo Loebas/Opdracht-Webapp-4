@@ -1,16 +1,15 @@
-<p>
-  game-detail works!
-</p>
-{{detailedGameId}}
-Hier de details voor {{detailedGame.naam}}
-<mat-card>
-  <mat-card-title>
-    {{detailedGame.naam}}
-  </mat-card-title>
-  <mat-card-content>
-    <h4>Aantal spelers</h4>
-    <p>Minimum: {{detailedGame.minSpelers}}</p>
-    <p>Maximum: {{detailedGame.maxSpelers}}</p>
-    <img [src]="'../assets/difficulty_' + detailedGame.difficulty + '.jpg'">
-  </mat-card-content>
-</mat-card>
+<div *ngIf="detailedGameId">
+  Hier komen de gamedetails voor spel met id: {{detailedGameId}}
+  <!-- Hier de details voor {{detailedGame.naam}}
+  <mat-card>
+    <mat-card-title>
+      {{detailedGame.naam}}
+    </mat-card-title>
+    <mat-card-content>
+      <h4>Aantal spelers</h4>
+      <p>Minimum: {{detailedGame.minSpelers}}</p>
+      <p>Maximum: {{detailedGame.maxSpelers}}</p>
+      <img [src]="'../assets/difficulty_' + detailedGame.difficulty + '.jpg'">
+    </mat-card-content>
+  </mat-card> -->
+</div>
